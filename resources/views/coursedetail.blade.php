@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div style="background: rgb(207, 251, 255);width:100%;height:100vh" class="py-5">
+    <div style="background: rgb(207, 251, 255); background-attachment: fixed;" class="py-5">
         <div class="container">
             <div class="w-50 mx-auto">
                 <h1 class="text-center">Course Name : {{$course->title}}</h1>
@@ -17,7 +17,18 @@
                             <h2>Title : {{ $lecture['title'] }}</h2>
                         </div>
                         <div class="card-body">
-                            <p>Lecture Link :{{ $lecture['lecturelink'] }}</p>
+                            <p class="my-2">Lecture Link :{{ $lecture['lecturelink'] }}</p>
+                        <p class="card-text">Posted : {{$lecture['created_at']->diffForHumans()}}</p>
+
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 px-3">
+                            <a class="btn btn-outline-success" href="{{ route('electure', $lecture['id']) }}">Edit</a>
+                            <form method="post" action="{{ route('destroylecture', $lecture['id']) }}"
+                                onsubmit="return confirm('Sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                            </form>
                         </div>
                     </div>
                 @endforeach
@@ -33,7 +44,17 @@
                             <h2>Title : {{ $assignmetn['title'] }}</h2>
                         </div>
                         <div class="card-body">
-                            <p>Assignment Description :{{ $assignmetn['description'] }}</p>
+                            <p class="mb-2">Assignment Description :{{ $assignmetn['description'] }}</p>
+                            <p class="card-text">Posted : {{$assignmetn['created_at']->diffForHumans()}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 px-3">
+                            <a class="btn btn-outline-success" href="{{ route('eassignment', $assignmetn['id']) }}">Edit</a>
+                            <form method="post" action="{{ route('destroyassignment', $assignmetn['id']) }}"
+                                onsubmit="return confirm('Sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                            </form>
                         </div>
                     </div>
                 @endforeach

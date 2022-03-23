@@ -6,11 +6,11 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                      <form action="{{route('addcourse')}}" method="POST">
+                      <form action="{{route('editcourse',$course['id'])}}" method="POST">
                         @csrf
                         <div class="form-group">
                           <label >Course Title</label>
-                          <input type="text" name="title" class="form-control my-3" placeholder="Enter Course Title">
+                          <input type="text" value="{{$course['title']}}" name="title" class="form-control my-3" placeholder="Enter Course Title">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>

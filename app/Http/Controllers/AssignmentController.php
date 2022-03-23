@@ -22,4 +22,25 @@ class AssignmentController extends Controller
         $newassignment->save();
         return redirect('profile');
     }
+    public function destroyassignment(Request $request, $id)
+    {
+        $assignment = Assignment::find($id);
+        $assignment->delete();
+        return redirect()->route('profile');
+    }
+    public function edit(Request $request, $id)
+    {
+        $assignment = Assignment::find($id);
+        return view('editassignment',['assignment'=>$assignment]);
+    }
+    
+    public function editassignment(Request $request, $id)
+    {
+
+        $data= Assignment::find($id);
+        $data['title'] = $request->title;
+        $data->save();
+        return redirect()->route('profile');
+    }
+
 }

@@ -33,4 +33,27 @@ class CourseController extends Controller
         $author = User::find($course['user_id']);
         return view('coursedetail',['lectures'=>$alllectures,'assignmetns'=>$allassignmetns,'course'=>$course,'author'=>$author]);
     }
+
+    public function destroycourse(Request $request, $id)
+    {
+        $course = Course::find($id);
+        $course->delete();
+        return redirect()->route('profile');
+    }
+    public function edit(Request $request, $id)
+    {
+        $course = Course::find($id);
+        return view('editcourse',['course'=>$course]);
+    }
+    
+    public function editcourse(Request $request, $id)
+    {
+
+        $data= Course::find($id);
+        $data['title'] = $request->title;
+        $data->save();
+        return redirect()->route('profile');
+    }
+
+
 }
