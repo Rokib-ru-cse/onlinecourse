@@ -19,6 +19,12 @@ class CourseController extends Controller
         $newcourse->save();
         return redirect('home');
     }
+    public function search(Request $request){
+        $queryString = $request->search;
+        $allpost = Course::where('title', 'LIKE', "%$queryString%")
+        ->orderBy('id','DESC')->get();
+        return view('home', ['courses' => $allpost]);
+    }
     public function profile_show(Request $request)
     {  
            $id =Auth::user()->id;

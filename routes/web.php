@@ -51,6 +51,8 @@ Route::get('/profile/coursedetail/edit/{id}', [AssignmentController::class, 'edi
 Route::post('/profile/coursedetail/edit/{id}', [AssignmentController::class, 'editassignment'])->name('editassignment');
 Route::delete('/profile/coursedetail/{id}', [AssignmentController::class, 'destroyassignment'])->name('destroyassignment');
 
+Route::get('/search', [CourseController::class, 'search'])->name('search');
+
 
 
 

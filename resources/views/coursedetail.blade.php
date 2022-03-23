@@ -44,7 +44,7 @@
                             <h2>Title : {{ $assignmetn['title'] }}</h2>
                         </div>
                         <div class="card-body">
-                            <p class="mb-2">Assignment Description :{{ $assignmetn['description'] }}</p>
+                            <p class="mb-2">Assignment Description : {{ $assignmetn['description'] }}</p>
                             <p class="card-text">Posted : {{$assignmetn['created_at']->diffForHumans()}}</p>
                         </div>
                         <div class="d-flex justify-content-between mb-3 px-3">
