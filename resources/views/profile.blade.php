@@ -18,14 +18,14 @@
         </div>
         <div class="container">
             <div class="w-50 mx-auto">
-                <h1 class="my-5 text-center">Your Posts</h1>
+                <h1 class="my-5 text-center">Your Courses</h1>
                 @foreach ($posts as $post)
                     <div class="card my-3">
                         <div class="card-header">
-                            Title : {{ $post['title'] }}
+                            <h2>Title : {{ $post['title'] }}</h2>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Title : {{ $post['title'] }}</h5>
+                            <h4 class="card-title"> <a class="btn btn-outline-primary" href="{{ route('coursedetail', $post['id']) }}">Course Details</a></h4>
                             <div class="d-flex justify-content-between">
 
                                 <a class="btn btn-outline-success" href="{{ route('addlecture', $post['id']) }}">Add Lectures</a>

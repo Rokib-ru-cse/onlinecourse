@@ -35,4 +35,6 @@ Route::get('/profile/addlecture/{id}', [LectureController::class, 'addlecture'])
 Route::post('/addlecture', [LectureController::class, 'editaddlecture'])->name('editaddlecture');
 
 Route::get('/profile/addassignment/{id}', [AssignmentController::class, 'addassignment'])->name('addassignment');
-Route::post('/addassignment/{id}', [AssignmentController::class, 'editaddassignment'])->name('editaddassignment');
+Route::post('/addassignment', [AssignmentController::class, 'editaddassignment'])->name('editaddassignment');
+
+Route::get('/coursedetail/{id}', [CourseController::class, 'coursedetail'])->name('coursedetail');

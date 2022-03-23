@@ -5,10 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Add Lecture For {{$course["title"]}}</div>
+                    <div class="card-header">Add Assignment For {{$course["title"]}}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{route('editaddlecture')}}">
+                        <form method="POST" action="{{route('editaddassignment')}}">
                             @csrf
                             <div class="row mb-3">
                                 <label  class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
