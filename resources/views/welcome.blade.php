@@ -21,24 +21,44 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+        @if (Auth::user())
+        {{-- {{ Redirect::to('home') }} --}}
+        <script>
+            window.location = "/home";
+        </script>
+    @endif
+    @if (Route::has('login'))
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        @auth
+            <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+        @else
+            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
+            @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
             @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <h1>Welcome to Free Online Course System</h1>
+        @endauth
+    </div>
+@endif
+    <div class="bg-image img-responsive" style="
+     background: linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.4)),url({{ url('images/welcome.jpg') }}) no-repeat center center;
+     background-size: cover;
+    position:relative;
+    width:100%;
+    height:100vh;
+    top:0px;
+    left: 0px;
+    z-index:-100;
+      "
+      >
+            <div class="text-center " style="position: relative;  color: #000;
+            font-size: 3rem;
+            z-index:1;
+            line-height: 0.9;padding-top:300px">
+                <p>Welcome to Free Online Course System</p>
+                <p>Please login to get access</p>
             </div>
+
         </div>
     </body>
 </html>
