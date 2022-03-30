@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid py-5" style="background: rgb(185, 229, 250); background-attachment: fixed; height:100vh">
+    <div class="container-fluid py-5" style="background: rgb(185, 229, 250)  no-repeat fixed center;">
         <div class="w-50 mx-auto">
             <h1 class="text-center">All Courses</h1>
             @foreach ($courses as $course)

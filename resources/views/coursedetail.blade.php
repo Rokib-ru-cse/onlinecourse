@@ -17,10 +17,11 @@
                             <h2>Title : {{ $lecture['title'] }}</h2>
                         </div>
                         <div class="card-body">
-                            <p class="my-2">Lecture Link :{{ $lecture['lecturelink'] }}</p>
+                            <p class="my-2">Lecture Link : {{ $lecture['lecturelink'] }}</p>
                         <p class="card-text">Posted : {{$lecture['created_at']->diffForHumans()}}</p>
 
                         </div>
+                        @if(Auth::user()->id==$course['user_id'])
                         <div class="d-flex justify-content-between mb-3 px-3">
                             <a class="btn btn-outline-success" href="{{ route('electure', $lecture['id']) }}">Edit</a>
                             <form method="post" action="{{ route('destroylecture', $lecture['id']) }}"
@@ -30,6 +31,7 @@
                                 <input type="submit" value="Delete" class="btn btn-outline-danger" />
                             </form>
                         </div>
+                        @endif
                     </div>
                 @endforeach
                 @endif
@@ -47,6 +49,7 @@
                             <p class="mb-2">Assignment Description : {{ $assignmetn['description'] }}</p>
                             <p class="card-text">Posted : {{$assignmetn['created_at']->diffForHumans()}}</p>
                         </div>
+                        @if(Auth::user()->id==$course['user_id'])
                         <div class="d-flex justify-content-between mb-3 px-3">
                             <a class="btn btn-outline-success" href="{{ route('eassignment', $assignmetn['id']) }}">Edit</a>
                             <form method="post" action="{{ route('destroyassignment', $assignmetn['id']) }}"
@@ -56,6 +59,7 @@
                                 <input type="submit" value="Delete" class="btn btn-outline-danger" />
                             </form>
                         </div>
+                        @endif
                     </div>
                 @endforeach
                 @endif
